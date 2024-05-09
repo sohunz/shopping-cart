@@ -8,7 +8,7 @@ const ProductPreview = () => {
             <div className="grid grid-cols-4 gap-3">
                 {products.map((product: productTypes) => {
                     return (
-                        <div>
+                        <div key={product.id}>
                             <ProductItem {...product} />
                         </div>
                     );
