@@ -3,9 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 
 const Navbar = () => {
-    const cardCouter = useSelector(
-        (state: RootState) => state.addCart.cartCount
-    );
+    const cardCouter = useSelector((state: RootState) => state.addCart.total);
 
     console.log(cardCouter);
 
