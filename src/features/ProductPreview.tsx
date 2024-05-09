@@ -2,21 +2,21 @@ import { useDispatch, useSelector } from "react-redux";
 import ProductItem from "../components/ProductItem";
 import { productTypes } from "../types/productType";
 import { RootState } from "../store/store";
-import { clearProduct } from "../store/productSlice/productSlice";
+import { removeAllCart } from "../store/cartSlice/cartSlice";
 
 const ProductPreview = () => {
-    const products = useSelector((state: RootState) => state.products);
+    const products = useSelector((state: RootState) => state.addCart.products);
     const dispatch = useDispatch();
 
-    const handleClearProduct = () => {
-        dispatch(clearProduct());
+    const handleClearAllCart = () => {
+        dispatch(removeAllCart());
     };
 
     return (
         <div className="max-w-[1200px] mx-auto mt-5">
             <button
                 className="bg-gray-200 px-3 py-2 rounded-md mb-5"
-                onClick={handleClearProduct}
+                onClick={handleClearAllCart}
             >
                 Clear products
             </button>
