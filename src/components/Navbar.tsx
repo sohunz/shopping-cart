@@ -8,8 +8,8 @@ const Navbar = () => {
     console.log(cardCouter);
 
     return (
-        <div className="w-full border">
-            <div className="max-w-[1200px] mx-auto">
+        <div className="w-full border shadow">
+            <div className="max-w-[1280px] mx-auto">
                 <div className="flex items-center justify-between py-5">
                     <p className="text-2xl font-semibold">LOGO</p>
                     <div className="relative">

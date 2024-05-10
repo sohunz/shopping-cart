@@ -15,14 +15,14 @@ const ProductPreview = () => {
     return (
         <div>
             {products.length > 0 ? (
-                <div className="max-w-[1200px] mx-auto mt-5">
+                <div className="max-w-[1280px] mx-auto mt-10">
                     <button
-                        className="bg-gray-200 px-3 py-2 rounded-md mb-5"
+                        className="bg-red-600 text-white shadow px-3 py-2 rounded-md mb-5"
                         onClick={handleClearAllCart}
                     >
-                        Clear products
+                        Remove all
                     </button>
-                    <div className="grid grid-cols-4 gap-3">
+                    <div className="grid grid-cols-4 gap-5">
                         {products.map((product: productTypes) => {
                             return (
                                 <div key={product.id}>
@@ -33,8 +33,10 @@ const ProductPreview = () => {
                     </div>
                 </div>
             ) : (
-                <div className="max-w-[1200px] mx-auto mt-5">
-                    <p className="text-xl font-semibold">No cart added!</p>
+                <div className="max-w-[1200px] mx-auto mt-10">
+                    <p className="text-3xl font-semibold text-center text-gray-400">
+                        Your cart is empty!
+                    </p>
                 </div>
             )}
         </div>

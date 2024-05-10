@@ -3,7 +3,7 @@ import { productTypes } from "../types/productType";
 import { addCart, reduceCard, removeCart } from "../store/cartSlice/cartSlice";
 import { RootState } from "../store/store";
 
-const ProductItem = ({ id, name, price }: productTypes) => {
+const ProductItem = ({ id, name, price, img }: productTypes) => {
     const total = useSelector((state: RootState) => state.addCart.products);
 
     const dispatch = useDispatch();
@@ -21,29 +21,33 @@ const ProductItem = ({ id, name, price }: productTypes) => {
     };
 
     return (
-        <div className="border p-3 rounded-lg">
-            <p>Name : {name}</p>
-            <p>Price : {price}</p>
-            <div className="flex flex-row items-center justify-between">
-                <div className="flex gap-1">
+        <div className="p-5 rounded-xl shadow bg-white">
+            <img src={img} alt="" />
+            <p className="text-center text-2xl text-gray-800 font-bold my-3">
+                {name}
+            </p>
+            <p className="text-lg mt-4 mb-2 text-center">${price}</p>
+            <div className="flex flex-row items-center justify-between mt-3">
+                <div className="flex items-center gap-1">
                     <button
-                        className="w-[40px] border  p-2 rounded-md mt-3"
+                        className="w-[40px] border  p-2 rounded-full"
                         onClick={() => handleReduceCart(id)}
                     >
                         -
                     </button>
                     <button
-                        className="w-[40px] border  p-2 rounded-md  mt-3"
+                        className="w-[40px] border  p-2 rounded-full"
                         onClick={() => handleAddCart(id)}
                     >
                         +
                     </button>
                 </div>
                 <p>
-                    Add: {total.filter((i) => i.id === id).map((i) => i.count)}
+                    Added:{" "}
+                    {total.filter((i) => i.id === id).map((i) => i.count)}
                 </p>
                 <button
-                    className="border bg-red-500 p-2 rounded-md text-white mt-3"
+                    className="border bg-red-500 px-3 py-[9px] rounded-md text-white text-sm"
                     onClick={() => handleRemoveCart(id)}
                 >
                     Remove

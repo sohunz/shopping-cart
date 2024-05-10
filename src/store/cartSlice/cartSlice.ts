@@ -26,7 +26,9 @@ export const cartSlice = createSlice({
             if (index !== -1 && state.products[index].count > 0) {
                 state.products[index].count -= 1;
                 state.total -= 1;
-                state.products.splice(index, 1);
+                if (state.products[index].count === 0) {
+                    state.products.splice(index, 1);
+                }
             }
         },
         removeAllCart: (state) => {
