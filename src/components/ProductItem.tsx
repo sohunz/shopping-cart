@@ -1,8 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { productTypes } from "../types/productType";
 import { addCart, reduceCard, removeCart } from "../store/cartSlice/cartSlice";
+import { RootState } from "../store/store";
 
 const ProductItem = ({ id, name, price }: productTypes) => {
+    const total = useSelector((state: RootState) => state.addCart.products);
+
     const dispatch = useDispatch();
 
     const handleAddCart = (id: number) => {
@@ -36,6 +39,9 @@ const ProductItem = ({ id, name, price }: productTypes) => {
                         +
                     </button>
                 </div>
+                <p>
+                    Add: {total.filter((i) => i.id === id).map((i) => i.count)}
+                </p>
                 <button
                     className="border bg-red-500 p-2 rounded-md text-white mt-3"
                     onClick={() => handleRemoveCart(id)}

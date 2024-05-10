@@ -2,36 +2,44 @@ import { createSlice } from "@reduxjs/toolkit";
 import { products } from "../../data/products";
 
 const initialState = {
-    products: products,
-    amount: 0,
-    total: 0,
+    products: products.map((product) => ({ ...product, count: 1 })),
+    total: 4,
 };
 
 export const cartSlice = createSlice({
-    name: "addCart",
+    name: "cart",
     initialState,
     reducers: {
         addCart: (state, action) => {
-            let cartItem: any = state.products.find(
+            const index = state.products.findIndex(
                 (item) => item.id === action.payload
             );
-            cartItem = state.total += 1;
+            if (index !== -1) {
+                state.products[index].count += 1;
+                state.total += 1;
+            }
         },
         reduceCard: (state, action) => {
-            let cartItem: any = state.products.find(
+            const index = state.products.findIndex(
                 (item) => item.id === action.payload
             );
-            cartItem = state.total -= 1;
+            if (index !== -1 && state.products[index].count > 0) {
+                state.products[index].count -= 1;
+                state.total -= 1;
+            }
         },
         removeAllCart: (state) => {
             state.products = [];
             state.total = 0;
         },
         removeCart: (state, action) => {
-            const remove = state.products.filter(
-                (item) => item.id !== action.payload
+            const index = state.products.findIndex(
+                (item) => item.id === action.payload
             );
-            state.products = remove;
+            if (index !== -1 && state.products[index].count > 0) {
+                state.total -= state.products[index].count;
+                state.products.splice(index, 1);
+            }
         },
     },
 });

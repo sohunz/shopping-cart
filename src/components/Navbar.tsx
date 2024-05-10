@@ -5,7 +5,7 @@ import { RootState } from "../store/store";
 const Navbar = () => {
     const cardCouter = useSelector((state: RootState) => state.addCart.total);
 
-    console.log(cardCouter);
+    // console.log(cardCouter);
 
     return (
         <div className="w-full border">
