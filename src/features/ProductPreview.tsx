@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ProductItem from "../components/ProductItem";
 import { productTypes } from "../types/productType";
 import { RootState } from "../store/store";
-import { removeAllCart, resetData } from "../store/cartSlice/cartSlice";
+import { removeAllCart } from "../store/cartSlice/cartSlice";
 
 const ProductPreview = () => {
     const products = useSelector((state: RootState) => state.addCart.products);
@@ -15,32 +15,20 @@ const ProductPreview = () => {
         dispatch(removeAllCart());
     };
 
-    const handleResetData = () => {
-        dispatch(resetData());
-    };
-
     return (
         <div>
             <div className="max-w-[1280px] mx-auto mt-10">
                 <div className="flex justify-between mb-5">
-                    {products.length > 0 ? (
-                        <button
-                            className="bg-red-600 text-white shadow px-3 py-2 rounded-md mb-5"
-                            onClick={handleClearAllCart}
-                        >
-                            Remove all
-                        </button>
-                    ) : (
-                        <button
-                            className="bg-gray-600 text-white shadow px-3 py-2 rounded-md mb-5"
-                            onClick={handleResetData}
-                        >
-                            Reset data
-                        </button>
-                    )}
+                    <button
+                        className="bg-red-600 text-white shadow px-3 py-2 rounded-md mb-5"
+                        onClick={handleClearAllCart}
+                    >
+                        Remove all
+                    </button>
                     <div>
                         <p className="text-2xl font-semibold">
-                            Total: ${totalPrice}
+                            Total:{" "}
+                            <span className="text-blue-500">${totalPrice}</span>
                         </p>
                     </div>
                 </div>

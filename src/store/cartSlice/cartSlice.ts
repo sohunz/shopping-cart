@@ -77,19 +77,10 @@ export const cartSlice = createSlice({
                 0
             );
         },
-        resetData: (state: any) => {
-            state.products = products;
-        },
     },
 });
 
-export const {
-    addCart,
-    reduceCard,
-    removeAllCart,
-    removeCart,
-    totalPrice,
-    resetData,
-} = cartSlice.actions;
+export const { addCart, reduceCard, removeAllCart, removeCart, totalPrice } =
+    cartSlice.actions;
 
 export default cartSlice.reducer;

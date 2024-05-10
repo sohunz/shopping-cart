@@ -8,7 +8,7 @@ export const products = [
     {
         id: 2,
         name: "M3 Macbook Pro",
-        price: 2000,
+        price: 2800,
         img: "https://img.freepik.com/free-photo/laptop-with-colorful-screen-isolated-white-background-3d-illustration_1142-43290.jpg?t=st=1715349281~exp=1715352881~hmac=bb46e04503997000a336f2baea2cfa699b7371ff42f221e4ccdcf4be0bc19e32&w=740",
     },
 
