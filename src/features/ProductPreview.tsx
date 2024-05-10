@@ -13,22 +13,30 @@ const ProductPreview = () => {
     };
 
     return (
-        <div className="max-w-[1200px] mx-auto mt-5">
-            <button
-                className="bg-gray-200 px-3 py-2 rounded-md mb-5"
-                onClick={handleClearAllCart}
-            >
-                Clear products
-            </button>
-            <div className="grid grid-cols-4 gap-3">
-                {products.map((product: productTypes) => {
-                    return (
-                        <div key={product.id}>
-                            <ProductItem {...product} />
-                        </div>
-                    );
-                })}
-            </div>
+        <div>
+            {products.length > 0 ? (
+                <div className="max-w-[1200px] mx-auto mt-5">
+                    <button
+                        className="bg-gray-200 px-3 py-2 rounded-md mb-5"
+                        onClick={handleClearAllCart}
+                    >
+                        Clear products
+                    </button>
+                    <div className="grid grid-cols-4 gap-3">
+                        {products.map((product: productTypes) => {
+                            return (
+                                <div key={product.id}>
+                                    <ProductItem {...product} />
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            ) : (
+                <div className="max-w-[1200px] mx-auto mt-5">
+                    <p className="text-xl font-semibold">No cart added!</p>
+                </div>
+            )}
         </div>
     );
 };

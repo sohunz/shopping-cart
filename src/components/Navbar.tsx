@@ -5,7 +5,7 @@ import { RootState } from "../store/store";
 const Navbar = () => {
     const cardCouter = useSelector((state: RootState) => state.addCart.total);
 
-    // console.log(cardCouter);
+    console.log(cardCouter);
 
     return (
         <div className="w-full border">
@@ -14,11 +14,13 @@ const Navbar = () => {
                     <p className="text-2xl font-semibold">LOGO</p>
                     <div className="relative">
                         <MdOutlineLocalGroceryStore size={35} />
-                        <div className="absolute top-[-10px] right-[-10px] bg-red-600 w-[25px] h-[25px] rounded-full flex items-center justify-center">
-                            <p className="text-sm font-semibold text-white">
-                                {cardCouter}
-                            </p>
-                        </div>
+                        {cardCouter > 0 ? (
+                            <div className="absolute top-[-10px] right-[-10px] bg-red-600 w-[25px] h-[25px] rounded-full flex items-center justify-center">
+                                <p className="text-sm font-semibold text-white">
+                                    {cardCouter}
+                                </p>
+                            </div>
+                        ) : null}
                     </div>
                 </div>
             </div>
